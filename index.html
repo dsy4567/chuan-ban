@@ -4,6 +4,7 @@
     s.src = 'https://www.unpkg.com/flv.js@1.6.2/dist/flv.min.js'
     s.onload = () => {
         fetch('stream-url.txt').then(res => res.text()).then(u => {
+            u=u.replace(/(http\:|https\:)/,"")
             var videoElement = document.querySelector('#v')
             var flvPlayer = flvjs.createPlayer({
                 type: 'flv',
