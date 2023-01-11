@@ -1,0 +1,18 @@
+<video src="" id="v"></video>
+<script>
+    let s = document.createElement('script')
+    s.src = 'https://www.unpkg.com/flv.js@1.6.2/dist/flv.min.js'
+    s.onload = () => {
+        fetch('stream-url.txt').then(res => res.text()).then(u => {
+            var videoElement = document.querySelector('#v')
+            var flvPlayer = flvjs.createPlayer({
+                type: 'flv',
+                url: u
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load();
+            flvPlayer.play();
+        })
+    }
+    document.documentElement.append(s)
+</script>
